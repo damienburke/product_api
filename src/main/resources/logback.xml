@@ -1,0 +1,25 @@
+<configuration>
+    <!-- Console appender to output logs to stdout -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+<!--    &lt;!&ndash; Logger configuration for SQL and Hibernate &ndash;&gt;-->
+<!--    <logger name="org.hibernate" level="DEBUG">-->
+<!--        <appender-ref ref="CONSOLE"/>-->
+<!--    </logger>-->
+<!--    <logger name="org.hibernate.SQL" level="DEBUG">-->
+<!--        <appender-ref ref="CONSOLE"/>-->
+<!--    </logger>-->
+<!--    <logger name="org.hibernate.type" level="TRACE">-->
+<!--        <appender-ref ref="CONSOLE"/>-->
+<!--    </logger>-->
+<!--    <logger name="org.testcontainers" level="TRACE"/>-->
+
+    <!-- Root logger configuration to ensure all logs are captured -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+</configuration>
