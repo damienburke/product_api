@@ -3,7 +3,7 @@ spring:
     name: product-api
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://db:5432/product_api_db
+    url: jdbc:postgresql://db:5432/product_db
     username: service_account
     password: ${SA_DB_PASSWORD}
   jpa:
@@ -24,7 +24,7 @@ spring:
     ignore-migration-patterns: "*:missing" # don't fail if a migration previously seen (potentially from a different branch) isn't seen now
 
     # use specific flyway db user that has elevated privileges
-    url: jdbc:postgresql://db:5432/product_api_db
+    url: jdbc:postgresql://db:5432/product_db
     user: product_api_user
     password: ${FLYWAY_DB_PASSWORD}
 

@@ -3,7 +3,7 @@ BEGIN
     CREATE ROLE service_account WITH LOGIN PASSWORD 'service_account_password';
 
     -- Grant permissions on all tables in the public schema
-    GRANT CONNECT ON DATABASE product_api_db TO service_account;
+    GRANT CONNECT ON DATABASE product_db TO service_account;
     GRANT USAGE ON SCHEMA public TO service_account;
     GRANT SELECT, INSERT, UPDATE ON ALL TABLES IN SCHEMA public TO service_account;
     GRANT USAGE, SELECT, UPDATE ON ALL SEQUENCES IN SCHEMA public TO service_account;

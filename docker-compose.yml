@@ -11,7 +11,7 @@ services:
       - "6869:8081"
     environment:
       - FLYWAY_DB_PASSWORD=${PRODUCT_DB_ADMIN_PASSWORD}
-      - SA_DB_PASSWORD=${PRODUCT_DB_API_PASSWORD}
+      - SA_DB_PASSWORD=${PRODUCT_DB_SA_PASSWORD}
 
   db:
     image: postgres
@@ -19,7 +19,7 @@ services:
     environment:
       - POSTGRES_USER=product_api_user
       - POSTGRES_PASSWORD=${PRODUCT_DB_ADMIN_PASSWORD}
-      - POSTGRES_DB=product_api_db
+      - POSTGRES_DB=product_db
     volumes:
       - ./init-scripts:/docker-entrypoint-initdb.d
     ports:

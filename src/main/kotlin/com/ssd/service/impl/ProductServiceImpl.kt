@@ -12,5 +12,5 @@ class ProductServiceImpl(val productRepository: ProductRepository) : ProductServ
         productRepository.save<ProductEntity>(entity)
     }
 
-    override fun findProductById(id: Long) = productRepository.findById(id)
+    override fun findProductById(id: String) = productRepository.findById(id)
 }
