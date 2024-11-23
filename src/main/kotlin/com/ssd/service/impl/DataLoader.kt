@@ -24,7 +24,8 @@ class DataLoader(val productRepository: ProductRepository) {
                 artist = "Beastie Boys",
                 albumTitle = "Licensed To Ill",
                 releaseYear = 1986,
-                price = BigDecimal.valueOf(30L)
+                price = BigDecimal.valueOf(30L),
+                promoCode = "12345"
             )
         )
     }

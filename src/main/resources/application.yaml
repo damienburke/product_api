@@ -1,3 +1,6 @@
+security-properties:
+  encryptionSecretKey: 1234567890123456
+
 spring:
   application:
     name: product-api
@@ -6,6 +9,10 @@ spring:
     url: jdbc:postgresql://db:5432/product_db
     username: service_account
     password: ${SA_DB_PASSWORD}
+
+    hikari:
+      connectionInitSql: select set_config('encryption.key', '${security-properties.encryptionSecretKey}', false)
+
   jpa:
     show-sql: true
     hibernate:

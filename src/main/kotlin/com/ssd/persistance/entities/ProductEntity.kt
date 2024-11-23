@@ -3,11 +3,13 @@ package com.ssd.persistance.entities
 import com.ssd.extensions.kotlinEquals
 import com.ssd.extensions.kotlinHashCode
 import com.ssd.extensions.kotlinToString
+import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.Table
+import org.hibernate.annotations.ColumnTransformer
 import java.math.BigDecimal
 
 @Entity
@@ -20,6 +22,13 @@ data class ProductEntity(
     val albumTitle: String = "",
     val releaseYear: Int = 0,
     val price: BigDecimal = BigDecimal.ZERO,
+
+    @ColumnTransformer(
+        read = "pgp_sym_decrypt(" + "promo_code, " + "current_setting('encryption.key')" + ")",
+        write = "pgp_sym_encrypt(" + "?::text," + "current_setting('encryption.key')" + ")"
+    )
+    @Column(columnDefinition = "bytea")
+    val promoCode: String = ""
 ) {
 
     companion object {
@@ -28,7 +37,8 @@ data class ProductEntity(
             ProductEntity::artist,
             ProductEntity::price,
             ProductEntity::albumTitle,
-            ProductEntity::releaseYear
+            ProductEntity::releaseYear,
+            ProductEntity::promoCode
         )
     }
 

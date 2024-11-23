@@ -7,5 +7,5 @@ interface ProductService {
 
     fun getProducts(): List<ProductEntity>
     fun addProduct(entity: ProductEntity)
-    fun findProductById(id: String): Optional<ProductEntity?>
+    fun findProductById(id: Int): Optional<ProductEntity?>
 }

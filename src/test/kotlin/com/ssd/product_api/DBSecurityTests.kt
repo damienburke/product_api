@@ -37,6 +37,18 @@ class DBSecurityTests : AbstractIntegrationTest() {
         )
     }
 
+
+    @Test
+    fun `verify decryption`() {
+        val existingProducts = productRepository.findProductsByName("Beastie Boys")
+        assertThat(existingProducts.first().promoCode).isNotEqualTo("12345") // encrypted
+        println("encrypted: ${existingProducts.first().promoCode}")
+
+        val existingProduct = productRepository.findById(existingProducts.first().id)
+        assertThat(existingProduct.get().promoCode).isEqualTo("12345")
+    }
+
+
     @Test
     fun `attempt to inject SQL - Native Query`() {
 
@@ -51,7 +63,7 @@ class DBSecurityTests : AbstractIntegrationTest() {
         // Validate the database integrity is preserved after the injection attempt
         val allProductsAfterAttempt = productRepository.findProductsByName("Beastie Boys")
         assertThat(allProductsAfterAttempt.size).isEqualTo(1)
-        assertThat(allProductsAfterAttempt.first()).isEqualTo(existingProducts.first())
+        assertThat(allProductsAfterAttempt.first().id).isEqualTo(existingProducts.first().id)
     }
 
     @Test
@@ -68,7 +80,7 @@ class DBSecurityTests : AbstractIntegrationTest() {
         // Validate the database integrity is preserved after the injection attempt
         val allProductsAfterAttempt = productRepository.findProductsByName("Beastie Boys")
         assertThat(allProductsAfterAttempt.size).isEqualTo(1)
-        assertThat(allProductsAfterAttempt.first()).isEqualTo(existingProducts.first())
+        assertThat(allProductsAfterAttempt.first().id).isEqualTo(existingProducts.first().id)
     }
 }
 

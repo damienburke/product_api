@@ -32,7 +32,7 @@ class ProductController(val productService: ProductService) {
     }
 
     @GetMapping("/product/{id}")
-    fun getProduct(@PathVariable id: String, model: Model): String {
+    fun getProduct(@PathVariable id: Int, model: Model): String {
         val product = productService.findProductById(id)
 
         if (product.isEmpty)

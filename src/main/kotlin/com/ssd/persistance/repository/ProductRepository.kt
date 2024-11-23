@@ -4,8 +4,7 @@ import com.ssd.persistance.entities.ProductEntity
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 
-interface ProductRepository : JpaRepository<ProductEntity, String> {
-
+interface ProductRepository : JpaRepository<ProductEntity, Int> {
 
     /**
      * The method is the exactly same as the spring magic method:
@@ -13,6 +12,8 @@ interface ProductRepository : JpaRepository<ProductEntity, String> {
      * {@code findByArtistContainingIgnoreCase}
      *
      * , but is additionally implemented as Native Query to demonstrate its ability to prevent SQL injection attacks.
+     *
+     * Also... this method does not decrypt the promo code. The Query Method methods do decrypt.
      */
     @Query(
         value = "SELECT * FROM product WHERE LOWER(TRIM(artist)) LIKE LOWER(CONCAT('%', :artist, '%'))",
