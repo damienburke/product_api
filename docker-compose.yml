@@ -1,18 +1,4 @@
 services:
-  product-api:
-    image: 'product-api:latest'
-    build:
-      context: .
-    container_name: product-api
-    depends_on:
-      - db
-    ports:
-      - "6868:8080"
-      - "6869:8081"
-    environment:
-      - FLYWAY_DB_PASSWORD=${PRODUCT_DB_ADMIN_PASSWORD}
-      - SA_DB_PASSWORD=${PRODUCT_DB_SA_PASSWORD}
-
   db:
     image: postgres
     container_name: db
@@ -24,3 +10,9 @@ services:
       - ./init-scripts:/docker-entrypoint-initdb.d
     ports:
       - "5433:5432"
+    networks:
+      - product-api-network
+
+networks:
+  product-api-network:
+    driver: bridge
