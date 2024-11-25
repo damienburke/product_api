@@ -1,5 +1,6 @@
 DO $$
 BEGIN
+
     CREATE ROLE service_account WITH LOGIN PASSWORD 'service_account_password';
 
     -- Grant permissions on all tables in the public schema

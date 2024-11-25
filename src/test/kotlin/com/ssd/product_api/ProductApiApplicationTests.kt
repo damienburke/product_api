@@ -7,7 +7,7 @@ import java.net.URI
 import java.net.http.HttpRequest
 import java.net.http.HttpResponse.BodyHandlers
 
-class ProductApiApplicationTests : AbstractIntegrationTest() {
+class ProductApiApplicationTests : BaseIT() {
 
     @LocalServerPort
     var port: Int = 0

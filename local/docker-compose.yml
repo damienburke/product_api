@@ -1,15 +1,19 @@
 services:
-  db:
-    image: postgres
-    container_name: db
+  postgres:
+    image: postgres:latest
     environment:
       - POSTGRES_USER=product_api_user
-      - POSTGRES_PASSWORD=${PRODUCT_DB_ADMIN_PASSWORD}
+      - POSTGRES_PASSWORD=product_api_pwd
       - POSTGRES_DB=product_db
     volumes:
       - ./init-scripts:/docker-entrypoint-initdb.d
     ports:
-      - "5433:5432"
+      - "5878:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U product_api_user -d product_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
     networks:
       - product-api-network
 

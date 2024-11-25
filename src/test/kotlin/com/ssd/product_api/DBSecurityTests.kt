@@ -7,7 +7,7 @@ import org.springframework.dao.InvalidDataAccessResourceUsageException
 import java.math.BigDecimal
 import kotlin.test.assertFailsWith
 
-class DBSecurityTests : AbstractIntegrationTest() {
+class DBSecurityTests : BaseIT() {
 
     /**
      * Principle of Least Privilege
