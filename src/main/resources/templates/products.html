@@ -25,14 +25,14 @@
         <td th:text="${product.releaseYear}"></td>
         <td th:text="${product.price}"></td>
         <td>
-            <a th:href="@{/product/{id}(id=${product.id})}" class="button">View Details</a>
+            <a th:href="@{/portal/product/{id}(id=${product.id})}" class="button">View Details</a>
         </td>
     </tr>
     </tbody>
 </table>
 <a href="/">Home</a>
 <div class="buttons">
-    <a href="/add-product">Add Product</a>
+    <a href="/portal/add-product">Add Product</a>
 </div>
 </body>
 </html>

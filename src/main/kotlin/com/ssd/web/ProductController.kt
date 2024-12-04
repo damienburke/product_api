@@ -28,7 +28,7 @@ class ProductController(val productService: ProductService) {
     @PostMapping("/add-product")
     fun addProduct(@ModelAttribute product: ProductEntity): String {
         productService.addProduct(product)
-        return "redirect:/products"
+        return "redirect:http://localhost:6867/portal/products"
     }
 
     @GetMapping("/product/{id}")
@@ -36,7 +36,7 @@ class ProductController(val productService: ProductService) {
         val product = productService.findProductById(id)
 
         if (product.isEmpty)
-            return "redirect:/products"
+            return "redirect:http://localhost:6867/portal/products"
         else {
             model.addAttribute("product", product.get())
             return "product-detail"

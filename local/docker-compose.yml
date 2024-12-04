@@ -15,8 +15,12 @@ services:
       timeout: 5s
       retries: 5
     networks:
-      - product-api-network
+      - damo_network
 
 networks:
-  product-api-network:
-    driver: bridge
+  damo_network:
+    external: true
+
+#networks:
+#  product-api-network:
+#    driver: bridge

@@ -11,5 +11,5 @@ docker run -d \
   -e SA_DB_PASSWORD=service_account_password \
   -p 6868:8080 \
   -p 6869:8081 \
-  --network local_product-api-network \
+  --network damo_network \
   product-api:latest

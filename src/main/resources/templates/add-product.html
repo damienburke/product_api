@@ -7,7 +7,7 @@
 <body>
 <h1>Add Product</h1>
 
-<form th:action="@{/add-product}" th:object="${product}" method="post">
+<form th:action="@{/portal/add-product}" th:object="${product}" method="post">
     <div>
         <label for="artist">Artist:</label>
         <input type="text" id="artist" th:field="*{artist}" required/>
@@ -29,8 +29,8 @@
     </div>
 </form>
 <div class="buttons">
-    <a href="/">Home</a>
-    <a href="/products">Back to Product List</a>
+    <a href="/portal">Home</a>
+    <a href="/portal/products">Back to Product List</a>
 </div>
 </body>
 </html>

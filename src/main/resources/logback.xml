@@ -6,19 +6,8 @@
         </encoder>
     </appender>
 
-<!--    &lt;!&ndash; Logger configuration for SQL and Hibernate &ndash;&gt;-->
-<!--    <logger name="org.hibernate" level="DEBUG">-->
-<!--        <appender-ref ref="CONSOLE"/>-->
-<!--    </logger>-->
-<!--    <logger name="org.hibernate.SQL" level="DEBUG">-->
-<!--        <appender-ref ref="CONSOLE"/>-->
-<!--    </logger>-->
-<!--    <logger name="org.hibernate.type" level="TRACE">-->
-<!--        <appender-ref ref="CONSOLE"/>-->
-<!--    </logger>-->
-    <logger name="org.testcontainers" level="TRACE"/>
+    <logger name="org.testcontainers" level="INFO"/>
 
-    <!-- Root logger configuration to ensure all logs are captured -->
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>
     </root>
